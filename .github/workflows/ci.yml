@@ -9,5 +9,6 @@ jobs:
     steps:
              - uses: actions/checkout@v1
              - uses: bahmutov/npm-install@v1.4.5
-             - run: npm run nx test store
-             - run: npm run nx test api
+             - run: npm run nx affected:lint --parallel --base=origin/master --head=HEAD
+             - run: npm run nx affected:build --parallel --base=origin/master --head=HEAD
+             - run: npm run nx affected:test --parallel --base=origin/master --head=HEAD
