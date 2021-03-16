@@ -1,0 +1,20 @@
+name: Deploy Website
+
+env:
+  SURGE_DOMAIN: ${{ secrets.SURGE_DOMAIN }}
+  SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+  HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploying apps
+    steps:
+      - uses: actions/checkout@v1
+      - uses: bahmutov/npm-install@v1.4.5
+      - run: npm run nx affected -- --target=build --parallel --base=origin/master --head=HEAD --prod
+      - run: npm run nx affected -- --target=deploy --parallel --base=origin/master --head=HEAD
