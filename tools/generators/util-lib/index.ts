@@ -8,7 +8,7 @@ export default async function (host: Tree, schema: any) {
 
   schema.linter = "tslint";
   schema.tags = "type:util,scope:" + schema.directory;
-  await libraryGenerator(host, { name: schema.name, linter: schema.linter, directory: schema.directory });
+  await libraryGenerator(host, { name: schema.name, linter: schema.linter, directory: schema.directory, tags: schema.tags });
   await formatFiles(host);
   return () => {
     installPackagesTask(host);
