@@ -1,8 +1,6 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
+  "cli": { "defaultCollection": "@nrwl/angular" },
   "defaultProject": "store",
   "generators": {
     "@nrwl/angular:application": {
@@ -16,9 +14,7 @@
       "linter": "eslint",
       "unitTestRunner": "jest"
     },
-    "@nrwl/angular:component": {
-      "style": "css"
-    }
+    "@nrwl/angular:component": { "style": "css" }
   },
   "projects": {
     "api": {
@@ -52,9 +48,7 @@
         },
         "serve": {
           "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "api:build"
-          }
+          "options": { "buildTarget": "api:build" }
         },
         "lint": {
           "executor": "@angular-devkit/build-angular:tslint",
@@ -163,16 +157,12 @@
             "proxyConfig": "apps/store/proxy.conf.json"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "store:build:production"
-            }
+            "production": { "browserTarget": "store:build:production" }
           }
         },
         "extract-i18n": {
           "executor": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "store:build"
-          }
+          "options": { "browserTarget": "store:build" }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
@@ -190,6 +180,20 @@
             "jestConfig": "apps/store/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "deploy": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "yarn surge dist/apps/store ${SURGE_DOMAIN} --token ${SURGE_TOKEN}"
+          }
+        },
+        "windows-deploy": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": [],
+          "options": {
+            "command": "surge dist/apps/store %SURGE_DOMAIN% --token %SURGE_TOKEN%"
+          }
         }
       }
     },
@@ -206,16 +210,12 @@
             "devServerTarget": "store:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "store:serve:production"
-            }
+            "production": { "devServerTarget": "store:serve:production" }
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/store-e2e/**/*.{js,ts}"]
-          }
+          "options": { "lintFilePatterns": ["apps/store-e2e/**/*.{js,ts}"] }
         }
       }
     },
@@ -272,15 +272,9 @@
           "options": {
             "uiFramework": "@storybook/angular",
             "port": 4400,
-            "config": {
-              "configFolder": "libs/store/ui-shared/.storybook"
-            }
+            "config": { "configFolder": "libs/store/ui-shared/.storybook" }
           },
-          "configurations": {
-            "ci": {
-              "quiet": true
-            }
-          }
+          "configurations": { "ci": { "quiet": true } }
         },
         "build-storybook": {
           "executor": "@nrwl/storybook:build",
@@ -288,15 +282,9 @@
           "options": {
             "uiFramework": "@storybook/angular",
             "outputPath": "dist/storybook/store-ui-shared",
-            "config": {
-              "configFolder": "libs/store/ui-shared/.storybook"
-            }
+            "config": { "configFolder": "libs/store/ui-shared/.storybook" }
           },
-          "configurations": {
-            "ci": {
-              "quiet": true
-            }
-          }
+          "configurations": { "ci": { "quiet": true } }
         }
       }
     },
@@ -313,9 +301,7 @@
             "devServerTarget": "store-ui-shared:storybook"
           },
           "configurations": {
-            "ci": {
-              "devServerTarget": "store-ui-shared:storybook:ci"
-            }
+            "ci": { "devServerTarget": "store-ui-shared:storybook:ci" }
           }
         },
         "lint": {

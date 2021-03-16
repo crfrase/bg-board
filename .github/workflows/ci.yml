@@ -14,5 +14,5 @@ jobs:
              - uses: actions/checkout@v1
              - uses: bahmutov/npm-install@v1.4.5
              - run: npm run nx affected -- --target=lint --parallel --base=origin/master --head=HEAD
-             - run: npm run nx affected -- --target=build --parallel --base=origin/master --head=HEAD
+             - run: npm run nx affected -- --target=build --parallel --base=origin/master --head=HEAD --prod
              - run: npm run nx affected -- --target=test --parallel --base=origin/master --head=HEAD
