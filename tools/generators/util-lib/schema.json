@@ -11,6 +11,14 @@
         "index": 0
       }
     },
+    "tags": {
+      "type": "string",
+      "description": "comma delimited tags to add",
+    },
+    "linter": {
+      "type": "string",
+      "description": "linter to use",
+    },
     "directory": {
       "type": "string",
       "description": "dir name",
