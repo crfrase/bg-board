@@ -3,7 +3,7 @@ const JSON5 = require('json5')
 
 export default async function (host: Tree, schema: any) {
   updateJson(host, "workspace.json", (json) => {
-    //json.version = json.version + 1;
+    json.version = json.version + 1;
     json.projects = sortObjectKeys(json.projects);
     return json;
   });
