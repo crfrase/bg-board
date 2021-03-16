@@ -22,7 +22,7 @@ export default async function (host: Tree, schema: any) {
   let jsonPart = jestStr.subarray(jestStr.indexOf("{"), jestStr.lastIndexOf("}")+1).toString();
   const moduleExports = JSON5.parse(jsonPart);;
   moduleExports.projects = moduleExports.projects.sort();
-  //host.write("jest.config.js", `module.exports = ${JSON5.stringify(moduleExports)};`);
+  host.write("jest.config.js", `module.exports = ${JSON5.stringify(moduleExports)};`);
 
 
   await formatFiles(host);
