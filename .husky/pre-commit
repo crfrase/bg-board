@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-nx workspace-generator sort-project-references && git add workspace.json nx.json
+nx workspace-generator sort-project-references
