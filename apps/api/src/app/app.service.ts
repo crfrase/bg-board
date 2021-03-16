@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Game } from '@bg-hoard/util-interface';
 
+const cool = 1;
 
 const games: Game[] = [
   {
