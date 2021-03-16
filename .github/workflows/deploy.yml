@@ -16,5 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: bahmutov/npm-install@v1.4.5
-      - run: npm run nx affected -- --target=build --parallel --base=origin/master --head=HEAD --prod
-      - run: npm run nx affected -- --target=deploy --parallel --base=origin/master --head=HEAD
+      - uses: rarmatei/last-successful-commit-action@v8
+        id: last_successful_commit
+        with:
+          branch: 'master'
+          workflow_id: 'deploy.yml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm run nx affected -- --target=build --parallel --base=origin/master --head=${{ steps.last_successful_commit.outputs.commit_hash }} --prod
+      - run: npm run nx affected -- --target=deploy --parallel --base=origin/master --head=${{ steps.last_successful_commit.outputs.commit_hash }}

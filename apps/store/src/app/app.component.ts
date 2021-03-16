@@ -10,7 +10,7 @@ import { Game } from '@bg-hoard/util-interface';
 })
 export class AppComponent {
   constructor(private http: HttpClient, @Inject('baseUrl') private baseUrl: string) {
-    console.log('components constructed');
+    console.log('componentss constructed');
   }
 
   title = 'Board Game Hoard';
